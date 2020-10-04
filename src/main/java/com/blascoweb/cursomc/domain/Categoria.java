@@ -7,9 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity //Indica que esta classe é uma entidade do JPA.
 public class Categoria  implements Serializable{
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id

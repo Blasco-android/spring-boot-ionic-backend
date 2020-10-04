@@ -5,8 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.blascoweb.cursomc.domain.Categoria;
 
-@Repository
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
+@Repository //Operações de acesso a Dados
+public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{	
 	
 	
 
