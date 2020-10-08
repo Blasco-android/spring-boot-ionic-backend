@@ -3,9 +3,11 @@ package com.blascoweb.cursomc.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.blascoweb.cursomc.domain.Categoria;
+import com.blascoweb.cursomc.domain.Cliente;
 
 @Repository //Operações de acesso a Dados
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{		
+public interface ClienteRepository extends JpaRepository<Cliente, Integer>{	
+	
+	
 
 }
