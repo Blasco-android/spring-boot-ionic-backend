@@ -13,6 +13,7 @@ import com.blascoweb.cursomc.domain.Cidade;
 import com.blascoweb.cursomc.domain.Cliente;
 import com.blascoweb.cursomc.domain.Endereco;
 import com.blascoweb.cursomc.domain.Estado;
+import com.blascoweb.cursomc.domain.ItemPedido;
 import com.blascoweb.cursomc.domain.Pagamento;
 import com.blascoweb.cursomc.domain.PagamentoComBoleto;
 import com.blascoweb.cursomc.domain.PagamentoComCartao;
@@ -25,6 +26,7 @@ import com.blascoweb.cursomc.repositories.CidadeRepository;
 import com.blascoweb.cursomc.repositories.ClienteRepository;
 import com.blascoweb.cursomc.repositories.EnderecoRepository;
 import com.blascoweb.cursomc.repositories.EstadoRepository;
+import com.blascoweb.cursomc.repositories.ItemPedidoRepository;
 import com.blascoweb.cursomc.repositories.PagamentoRepository;
 import com.blascoweb.cursomc.repositories.PedidoRepository;
 import com.blascoweb.cursomc.repositories.ProdutoRepository;
@@ -48,6 +50,8 @@ public class CursomcApplication implements CommandLineRunner{
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	
 	public static void main(String[] args) {
@@ -117,6 +121,21 @@ public class CursomcApplication implements CommandLineRunner{
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		
+		//Instanciando os Itens de cada pedido.
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, p1.getPreco());
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, p3.getPreco());
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, p2.getPreco());
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
+		
 	}
 
 }
