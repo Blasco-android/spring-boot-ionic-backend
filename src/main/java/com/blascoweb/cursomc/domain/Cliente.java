@@ -15,11 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.blascoweb.cursomc.domain.enums.TipoCliente;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Cliente implements Serializable{
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID=1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,7 +28,6 @@ public class Cliente implements Serializable{
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
-	@JsonManagedReference //Cliente pode serializar Endereco(Endpoint).
 	@OneToMany(mappedBy="clientes")
 	private List<Endereco> enderecos = new ArrayList<Endereco>();
 	
