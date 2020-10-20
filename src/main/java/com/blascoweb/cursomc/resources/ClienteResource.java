@@ -22,6 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.blascoweb.cursomc.domain.Cliente;
 import com.blascoweb.cursomc.dto.ClienteDTO;
+import com.blascoweb.cursomc.dto.ClienteNewDTO;
 import com.blascoweb.cursomc.services.ClienteService;
 
 @RestController
@@ -39,7 +40,7 @@ public class ClienteResource {
 	
 	//Inserir um novo dado no banco
 		@RequestMapping(method=RequestMethod.POST)
-		public ResponseEntity<Void> insert(@Valid @RequestBody ClienteDTO objDto){
+		public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto){
 			Cliente obj = service.fromDTO(objDto);
 			obj = service.insert(obj);
 			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
