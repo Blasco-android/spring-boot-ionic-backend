@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blascoweb.cursomc.domain.Cliente;
 import com.blascoweb.cursomc.domain.Pedido;
-import com.blascoweb.cursomc.services.ClienteService;
 import com.blascoweb.cursomc.services.PedidoService;
 
 @RestController
