@@ -20,7 +20,7 @@ public class ClienteDTO implements Serializable {
 	
 	//Para estas anotações foi necessario adicionar novas dependencias no pom.xml.
 	@NotEmpty(message="Preenchimento Obrigatório")
-	@Length(min=5, max=80, message="Tamanho deve ser entre 5 e 80 caracteres.")
+	@Length(min=5, max=120, message="Tamanho deve ser entre 5 e 120 caracteres.")
 	private String nome;
 	
 	@NotEmpty(message="Preenchimento obrigatório")

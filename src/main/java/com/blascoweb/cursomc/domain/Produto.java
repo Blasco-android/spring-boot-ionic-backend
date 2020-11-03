@@ -27,21 +27,20 @@ public class Produto implements Serializable{
 	private String nome;
 	private Double preco;
 	
+	// Tabela Intermediaria de ligação entre categoria e produto.
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", 
-			   joinColumns = @JoinColumn(name = "produto_id"), 
-			   inverseJoinColumns = @JoinColumn(name = "categoria_id")
-	)// Tabela Intermediaria de ligação entre categoria e produto.
+			joinColumns = @JoinColumn(name = "produto_id"), 
+			inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="id.produto")
 	private Set<ItemPedido> itens = new HashSet<>();
 	
-	public Produto() {
-		
-	}
-		
+	public Produto() {		
+	}		
 	
 	// Obs. Atributo categoria não entra no constructor, pos ja foi inicializada.
 	public Produto(Integer id, String nome, Double preco) {
@@ -51,6 +50,7 @@ public class Produto implements Serializable{
 		this.preco = preco;
 	}
 	
+	@JsonIgnore
 	public List<Pedido> getPedidos(){
 		List<Pedido> lista = new ArrayList<>();
 		for(ItemPedido x : itens) {

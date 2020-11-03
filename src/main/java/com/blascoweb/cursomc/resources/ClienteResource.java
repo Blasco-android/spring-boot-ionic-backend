@@ -33,7 +33,7 @@ public class ClienteResource {
 	private ClienteService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -80,8 +80,7 @@ public class ClienteResource {
 				@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
 				@RequestParam(value="direction", defaultValue="ASC") String direction) {
 			Page<Cliente> list = service.findPage(page, linesPerPage, orderBy, direction);
-			Page<ClienteDTO> listDto = list
-					.map(obj -> new ClienteDTO(obj));
+			Page<ClienteDTO> listDto = list.map(obj -> new ClienteDTO(obj));
 			return ResponseEntity.ok().body(listDto);
 		}
 
