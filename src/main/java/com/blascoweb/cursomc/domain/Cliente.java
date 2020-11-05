@@ -33,7 +33,7 @@ public class Cliente implements Serializable{
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
-	@OneToMany(mappedBy="clientes", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
 	private List<Endereco> enderecos = new ArrayList<Endereco>();
 	
 	@ElementCollection
@@ -41,7 +41,7 @@ public class Cliente implements Serializable{
 	private Set<String> telefones = new HashSet<String>();
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy="cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public Cliente() {		

@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.blascoweb.cursomc.domain.Categoria;
-import com.blascoweb.cursomc.domain.Cliente;
 import com.blascoweb.cursomc.dto.CategoriaDTO;
 import com.blascoweb.cursomc.repositories.CategoriaRepository;
 import com.blascoweb.cursomc.services.exceptions.DataIntegrityException;
@@ -54,8 +53,7 @@ public class CategoriaService {
 	}
 	
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
-		PageRequest pageRequest = PageRequest.of(
-				page, linesPerPage, Direction.valueOf(direction), orderBy);
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
 	

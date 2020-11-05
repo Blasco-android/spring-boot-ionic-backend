@@ -33,7 +33,7 @@ public class ClienteResource {
 	private ClienteService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
+	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -63,12 +63,11 @@ public class ClienteResource {
 			return ResponseEntity.noContent().build();
 		}
 		
-		// Retorna uma lista de categoria sem os produtos
+		// Retorna uma lista de cliente sem os produtos
 		@RequestMapping(method=RequestMethod.GET)
 		public ResponseEntity<List<ClienteDTO>> findAll() {
 			List<Cliente> list = service.findAll();
-			List<ClienteDTO> listDto = list.stream()
-					.map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
+			List<ClienteDTO> listDto = list.stream().map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
 			return ResponseEntity.ok().body(listDto);
 		}
 		
